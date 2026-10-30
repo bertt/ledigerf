@@ -54,7 +54,8 @@ uv run python scripts/export_georef.py     # transparent WebP overlays + docs/im
 
 - **p18** is placed by matching its blue water areas to the BGT water polygons (scale, rotation, translation search; Dice 0.68, ≈5.5 cm/px). Bridges and the plan's simplified water cause some mismatch.
 - **p30** has little water in common with the BGT, so it is matched to the already georeferenced p18 through shared features (SIFT + RANSAC, 47 inliers, ≈7 cm/px). The overlay against BGT water was checked visually.
-- Both results are written as four corner coordinates (WGS84) used by MapLibre image sources. Accuracy is roughly a metre or more; the plans are stylised drawings.
+- The results are stored in [`georef/`](georef/) as standard world files (`p18.pgw`, `p30.pgw`, with `.prj` = EPSG:28992) plus a `.json` with the affine transform and corner coordinates. Extract the PDF images with `scripts/extract_pdf.py` (`p18_0.png`, `p30_0.png`) and load them in QGIS/GDAL next to the `.pgw` to reuse the georeferencing without re-running the matching. `uv run python scripts/save_georef.py` regenerates these files from `work/geo_*.json`.
+- Both results are also exported as four corner coordinates (WGS84) used by MapLibre image sources. Accuracy is roughly a metre or more; the plans are stylised drawings.
 
 ## GitHub Pages
 
