@@ -13,6 +13,7 @@
     <nav>
       <button data-tab="compare" class="active">Photo compare</button>
       <button data-tab="map">Map</button>
+      <button data-tab="space">Space shift</button>
       <button data-tab="gallery">All images</button>
       <button data-tab="info">ⓘ Info</button>
     </nav>
@@ -53,6 +54,22 @@
     </div>
   </main>
 
+  <main id="space" class="tab">
+    <section class="panel">
+      <h2>Who gets the space?</h2>
+      <p class="lead">Rough estimate of how the public space around the Ledig Erf is divided, today versus in the concept design.</p>
+      <div id="kpis" class="kpis"></div>
+      <div id="bars" class="bars"></div>
+      <div class="legend">
+        <span><i class="c-car"></i>Cars (road, parking)</span>
+        <span><i class="c-bike"></i>Cyclists</span>
+        <span><i class="c-walk"></i>Pedestrians (paving, squares)</span>
+        <span><i class="c-green"></i>Greenery</span>
+      </div>
+      <p class="small"><b>Rough estimate (about ±10 percentage points).</b> <i>Existing</i>: BGT base-map polygons (PDOK) inside the plan p18 footprint, by function. <i>Proposed</i>: colour classes of the plan (asphalt/clinker = cars, red asphalt = cycle path, paving = pedestrians, green) plus the shared 5.80 m carriageway, counted half car, half bike. Water and buildings are excluded. Tree canopies drawn over paving count as green, so “Pedestrians &amp; green” is the most reliable figure for people. Scripts: <code>scripts/space_share.py</code>.</p>
+    </section>
+  </main>
+
   <main id="gallery" class="tab"><div id="grid"></div></main>
 
   <main id="info" class="tab">
@@ -81,5 +98,6 @@
   <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
   <script src="app.js"></script>
   <script src="map.js"></script>
+  <script src="space.js"></script>
 </body>
 </html>

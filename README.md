@@ -23,10 +23,11 @@ uv run python scripts/make_gallery.py      # web JPEGs + docs/images/gallery.jso
 
 ## Website
 
-`docs/` is a static site with four tabs:
+`docs/` is a static site with five tabs:
 
 - **Photo compare** (default) – before/after slider for each existing/proposed pair.
 - **Map** – MapLibre map (OpenFreeMap base) with the georeferenced site plans of Ledig Erf (p18) and Catharijnesingel (p30) as overlays; toggle and opacity controls. Deep links: `#map`, `#gallery`, `#info`.
+- **Space shift** – rough estimate of the share of space for cars, cyclists, pedestrians and greenery, existing vs. proposed.
 - **All images** – gallery of all extracted images with a lightbox.
 - **Info** – short English summary of what is planned at Ledig Erf, with a link to the project page.
 
@@ -43,6 +44,18 @@ uv run python -m http.server 8000 -d docs     # http://localhost:8000
 **Map** (georeferenced site plans on OpenFreeMap)
 
 ![Map tab](screenshots/map.png)
+
+**Space shift** (rough estimate)
+
+![Space shift tab](screenshots/space.png)
+
+## Space shift estimate
+
+```powershell
+uv run python scripts/space_share.py work/pdf/images/p18_0.png work/geo_p18.json   # writes docs/images/space.json
+```
+
+A rough estimate (about ±10 percentage points) of how public space is divided between cars, cyclists, pedestrians and greenery around the Ledig Erf. *Existing* comes from BGT polygons (PDOK) by function inside the p18 footprint; *proposed* from colour classes of plan p18 (legend) plus the 5.80 m shared carriageway traced on the plan and counted half car, half bike. Water and buildings are excluded. Result: car space ≈ −48 % (34 % → 17 % of the space), cycling space ≈ +67 % (10 % → 16 %), pedestrians and green ≈ +22 % (56 % → 66 %). Tree canopies drawn over paving count as green, so pedestrians and green are best read together.
 
 ## Georeferencing the site plans
 

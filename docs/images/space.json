@@ -1,0 +1,38 @@
+{
+ "before_m2": {
+  "car": 3271,
+  "bike": 957,
+  "walk": 3706,
+  "green": 1612
+ },
+ "after_m2": {
+  "car": 1688,
+  "bike": 1601,
+  "walk": 2839,
+  "green": 3662
+ },
+ "before_pct": {
+  "car": 34.3,
+  "bike": 10.0,
+  "walk": 38.8,
+  "green": 16.9
+ },
+ "after_pct": {
+  "car": 17.2,
+  "bike": 16.4,
+  "walk": 29.0,
+  "green": 37.4
+ },
+ "change_pct_points": {
+  "car": -17.0,
+  "bike": 6.3,
+  "walk": -9.8,
+  "green": 20.5
+ },
+ "change_relative_pct": {
+  "car": -48,
+  "bike": 67,
+  "walk": -23,
+  "green": 127
+ }
+}

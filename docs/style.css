@@ -56,3 +56,19 @@ button.active, button:hover { background: #3a8d6b; }
 #mapctl > label { display: block; margin: 14px 0 6px; }
 #opacity { width: 100%; }
 @media (max-width: 800px) { #mapwrap { flex-direction: column-reverse; height: auto; } #maplibre { height: 60vh; } #mapctl { width: auto; } }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 22px 0; }
+.kpi { position: relative; background: #1d252b; border: 1px solid #2b3840; border-radius: 12px; padding: 16px 18px 14px 22px; overflow: hidden; }
+.kpi > i { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
+.kpi h3 { margin: 0; font-size: 14px; color: #9bb; text-transform: uppercase; letter-spacing: .06em; }
+.kpi .big { font-size: 46px; font-weight: 800; margin: 6px 0; }
+.kpi.up .big { color: #5fd49b; } .kpi.down .big { color: #ff7b72; }
+.kpi p { margin: 0; color: #cdd9de; } .kpi small { color: #8fa0a8; }
+.bars { margin: 26px 0 14px; }
+.barrow { display: flex; align-items: center; gap: 14px; margin: 12px 0; }
+.barrow > b { width: 80px; }
+.bar { display: flex; flex: 1; height: 46px; border-radius: 8px; overflow: hidden; }
+.bar > div { display: flex; align-items: center; justify-content: center; font-weight: 700; color: #111; transition: width .6s; }
+.c-car { background: #e0605a; } .c-bike { background: #c77dd6; } .c-walk { background: #f0c05a; } .c-green { background: #6fbf73; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; color: #cdd9de; font-size: 14px; margin-bottom: 16px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; }
