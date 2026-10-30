@@ -28,7 +28,7 @@ uv run python scripts/make_gallery.py      # web JPEGs + docs/images/gallery.jso
 - **Photo compare** (default) – existing and proposed photos side by side for each pair.
 - **Map** – MapLibre map (OpenFreeMap base) with the georeferenced site plans of Ledig Erf (p18) and Catharijnesingel (p30) as overlays; toggle and opacity controls.
 - **Permanent links** – every tab has its own URL: [`#compare`](https://bertt.github.io/ledigerf/#compare), [`#map`](https://bertt.github.io/ledigerf/#map), [`#space`](https://bertt.github.io/ledigerf/#space), [`#info`](https://bertt.github.io/ledigerf/#info). The address bar updates when switching tabs, and back/forward works.
-- **Space shift** – rough estimate of the share of space for cars, cyclists, pedestrians and greenery, existing vs. proposed.
+- **Space shift** – rough estimate of the share of street space for cars, cyclists and pedestrians, existing vs. proposed.
 - **Info** – short English summary of what is planned at Ledig Erf, with a link to the project page.
 
 ```powershell
@@ -55,7 +55,7 @@ uv run python -m http.server 8000 -d docs     # http://localhost:8000
 uv run python scripts/space_share.py work/pdf/images/p18_0.png work/geo_p18.json   # writes docs/images/space.json
 ```
 
-A rough estimate (about ±10 percentage points) of how public space is divided between cars, cyclists, pedestrians and greenery around the Ledig Erf. *Existing* comes from BGT polygons (PDOK) by function inside the p18 footprint; *proposed* from colour classes of plan p18 (legend) plus the 5.80 m shared carriageway traced on the plan and counted half car, half bike. Water and buildings are excluded. Tree canopies are removed: each canopy pixel takes the class of the nearest surface outside the canopy. Result: car space ≈ −35 % (34 % → 22 % of the space), cycling space ≈ +74 % (10 % → 17 %), pedestrians and green together ≈ +9 % (56 % → 60 %; paving alone is about unchanged), greenery ≈ +33 % (17 % → 22 %).
+A rough estimate (about ±10 percentage points) of how paved street space is divided between cars, cyclists and pedestrians around the Ledig Erf. *Existing* comes from BGT polygons (PDOK) by function inside the p18 footprint; *proposed* from colour classes of plan p18 (legend) plus the 5.80 m shared carriageway traced on the plan and counted half car, half bike. Greenery, water and buildings are excluded, and tree canopies are removed (each canopy pixel takes the class of the nearest surface outside the canopy). Shares of the remaining space: cars 41 % → 29 % (≈ −31 %), cyclists 12 % → 22 % (≈ +86 %), pedestrians 47 % → 49 % (≈ +5 %).
 
 ## Georeferencing the site plans
 

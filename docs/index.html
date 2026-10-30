@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ledig Erf, Utrecht – before / after</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header>
@@ -55,16 +55,15 @@
   <main id="space" class="tab">
     <section class="panel">
       <h2>Who gets the space?</h2>
-      <p class="lead">Rough estimate of how the public space around the Ledig Erf is divided, today versus in the concept design.</p>
+      <p class="lead">Rough estimate of how the paved street space around the Ledig Erf is divided between cars, cyclists and pedestrians, today versus in the concept design.</p>
       <div id="kpis" class="kpis"></div>
       <div id="bars" class="bars"></div>
       <div class="legend">
         <span><i class="c-car"></i>Cars (road, parking)</span>
         <span><i class="c-bike"></i>Cyclists</span>
         <span><i class="c-walk"></i>Pedestrians (paving, squares)</span>
-        <span><i class="c-green"></i>Greenery</span>
       </div>
-      <p class="small"><b>Rough estimate (about ±10 percentage points).</b> <i>Existing</i>: BGT base-map polygons (PDOK) inside the plan p18 footprint, by function. <i>Proposed</i>: colour classes of the plan (asphalt/clinker = cars, red asphalt = cycle path, paving = pedestrians, green) plus the shared 5.80 m carriageway, counted half car, half bike. Water and buildings are excluded. Tree canopies are removed from the analysis: each canopy pixel takes the class of the nearest surface outside the canopy. “Pedestrians &amp; green” combines paving and planting. Scripts: <code>scripts/space_share.py</code>.</p>
+      <p class="small"><b>Rough estimate (about ±10 percentage points).</b> <i>Existing</i>: BGT base-map polygons (PDOK) inside the plan p18 footprint, by function. <i>Proposed</i>: colour classes of the plan (asphalt/clinker = cars, red asphalt = cycle path, paving = pedestrians) plus the shared 5.80 m carriageway, counted half car, half bike. Greenery, water and buildings are excluded; the percentages show the change in share of the remaining space. Tree canopies are removed from the analysis: each canopy pixel takes the class of the nearest surface outside the canopy. Scripts: <code>scripts/space_share.py</code>.</p>
     </section>
   </main>
 
@@ -91,8 +90,8 @@
 
 
   <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
-  <script src="app.js?v=4"></script>
-  <script src="map.js?v=4"></script>
-  <script src="space.js?v=4"></script>
+  <script src="app.js?v=5"></script>
+  <script src="map.js?v=5"></script>
+  <script src="space.js?v=5"></script>
 </body>
 </html>
