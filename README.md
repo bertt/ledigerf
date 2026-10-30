@@ -34,6 +34,16 @@ uv run python scripts/make_gallery.py      # web JPEGs + docs/images/gallery.jso
 uv run python -m http.server 8000 -d docs     # http://localhost:8000
 ```
 
+## Screenshots
+
+**Photo compare**
+
+![Photo compare tab](screenshots/photo-compare.png)
+
+**Map** (georeferenced site plans on OpenFreeMap)
+
+![Map tab](screenshots/map.png)
+
 ## Georeferencing the site plans
 
 ```powershell
