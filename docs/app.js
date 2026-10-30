@@ -44,15 +44,21 @@ window.addEventListener("pointermove", (e) => drag && move(e));
 function fit() { $("#imgBefore").style.width = slider.clientWidth + "px"; }
 new ResizeObserver(fit).observe(slider);
 
+function show(tab) {
+  const b = document.querySelector(`nav button[data-tab="${tab}"]`);
+  if (!b) return;
+  document.querySelectorAll("nav button, .tab").forEach((e) => e.classList.remove("active"));
+  b.classList.add("active");
+  $("#" + tab).classList.add("active");
+  fit();
+  if (window.onTab) window.onTab(tab);
+}
+
+// permanent links: #compare, #map, #space, #gallery, #info
 document.querySelectorAll("nav button").forEach((b) => {
-  b.onclick = () => {
-    document.querySelectorAll("nav button, .tab").forEach((e) => e.classList.remove("active"));
-    b.classList.add("active");
-    $("#" + b.dataset.tab).classList.add("active");
-    fit();
-    if (window.onTab) window.onTab(b.dataset.tab);
-  };
+  b.onclick = () => { location.hash = b.dataset.tab; };
 });
+window.addEventListener("hashchange", () => show(location.hash.slice(1) || "compare"));
 
 fetch("images/gallery.json").then((r) => r.json()).then((items) => {
   const lb = $("#lightbox");
@@ -65,6 +71,5 @@ fetch("images/gallery.json").then((r) => r.json()).then((items) => {
   lb.onclick = () => (lb.hidden = true);
 });
 
-// deep link: #map, #gallery, #info
-const start = document.querySelector(`nav button[data-tab="${location.hash.slice(1)}"]`);
-if (start) start.click();
+// deep link on load
+if (location.hash) show(location.hash.slice(1));

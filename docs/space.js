@@ -12,7 +12,7 @@ fetch('images/space.json').then(r => r.json()).then(d => {
     const rel = Math.round((k.a - k.b) / k.b * 100);
     return `<span class="${rel >= 0 ? 'up' : 'down'}">${n} <b>${rel >= 0 ? '▲' : '▼'} ${Math.abs(rel)}%</b></span>`;
   }).join('');
-  hs.addEventListener('click', e => { e.preventDefault(); document.querySelector('nav button[data-tab="space"]').click(); });
+
 
   document.getElementById('kpis').innerHTML = kpi.map(k => {
     const rel = Math.round((k.a - k.b) / k.b * 100);
