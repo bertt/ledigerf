@@ -7,12 +7,11 @@ button { padding: 7px 12px; border: 0; border-radius: 5px; background: #345; col
 button.active, button:hover { background: #3a8d6b; }
 .tab { display: none; padding: 12px 16px; }
 .tab.active { display: block; }
-#sbs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 1500px; margin: 10px auto; }
+#sbs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; max-width: 1500px; margin: 10px auto; }
 #sbs figure { margin: 0; position: relative; }
 #sbs img { display: block; width: 100%; height: auto; max-height: calc(100vh - 290px); object-fit: contain; background: #0e1215; border-radius: 6px; }
 #sbs figcaption { position: absolute; top: 10px; left: 10px; padding: 4px 12px; border-radius: 4px; background: rgba(0,0,0,.65); font-size: 13px; font-weight: 700; }
 #sbs figure:last-child figcaption { background: rgba(58,141,107,.9); }
-@media (max-width: 800px) { #sbs { grid-template-columns: 1fr; } #sbs img { max-height: none; } }
 #caption { text-align: center; color: #bcd; }
 #pairs { text-align: center; }
 #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
