@@ -32,22 +32,11 @@ function showTab(tab) {
   if (window.onTab) window.onTab(tab);
 }
 
-// permanent links: #compare, #map, #space, #gallery, #info
+// permanent links: #compare, #map, #space, #info
 document.querySelectorAll("nav button").forEach((b) => {
   b.onclick = () => { location.hash = b.dataset.tab; };
 });
 window.addEventListener("hashchange", () => showTab(location.hash.slice(1) || "compare"));
-
-fetch("images/gallery.json").then((r) => r.json()).then((items) => {
-  const lb = $("#lightbox");
-  for (const it of items) {
-    const im = document.createElement("img");
-    im.src = it.file; im.alt = it.caption; im.title = it.caption; im.loading = "lazy";
-    im.onclick = () => { lb.querySelector("img").src = it.file; lb.querySelector("p").textContent = it.caption; lb.hidden = false; };
-    $("#grid").appendChild(im);
-  }
-  lb.onclick = () => (lb.hidden = true);
-});
 
 // deep link on load
 if (location.hash) showTab(location.hash.slice(1));
