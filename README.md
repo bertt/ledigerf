@@ -2,6 +2,8 @@
 
 Extracts the images from the concept design note *"Nota van Uitgangspunten en Schetsontwerp Ledig Erf – Bleekstraat"* (Utrecht) and shows them in a static website with a before/after slider (existing situation vs. proposed design). Ready for GitHub Pages.
 
+**Live site: <https://bertt.github.io/ledigerf/>**
+
 ## Setup
 
 Python via [`uv`](https://docs.astral.sh/uv/):
