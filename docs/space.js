@@ -6,17 +6,17 @@ fetch('images/space.json').then(r => r.json()).then(d => {
     { key: 'bike', label: 'Cycling space', cls: 'c-bike' },
     { key: 'walk', label: 'Pedestrian space', cls: 'c-walk' },
   ].map(k => ({ ...k, b: d.before_m2[k.key] / tb * 100, a: d.after_m2[k.key] / ta * 100, bm: d.before_m2[k.key], am: d.after_m2[k.key] }));
-  const rel = k => Math.round((k.a - k.b) / k.b * 100);
+  const rel = k => Math.round(k.a) - Math.round(k.b);
   const hs = document.getElementById('hsum');
   hs.innerHTML = [['Cars', kpi[0]], ['Cyclists', kpi[1]], ['Walkers', kpi[2]]].map(([n, k]) =>
-    `<span class="${rel(k) >= 0 ? 'up' : 'down'}">${n} <b>${rel(k) >= 0 ? '▲' : '▼'} ${Math.abs(rel(k))}%</b></span>`).join('');
+    `<span class="${rel(k) >= 0 ? 'up' : 'down'}">${n} <b>${rel(k) >= 0 ? '▲' : '▼'} ${Math.abs(rel(k))} pts</b></span>`).join('');
 
   document.getElementById('kpis').innerHTML = kpi.map(k => {
-    const up = rel(k) >= 0, pts = k.a - k.b;
+    const up = rel(k) >= 0;
     return `<div class="kpi ${up ? 'up' : 'down'}"><i class="${k.cls}"></i><h3>${k.label}</h3>
-      <div class="big">${up ? '▲' : '▼'} ${Math.abs(rel(k))}%</div>
+      <div class="big">${up ? '▲' : '▼'} ${Math.abs(rel(k))}<span class="u"> pts</span></div>
       <p>${Math.round(k.b)}% → ${Math.round(k.a)}% of the space<br>
-      <small>≈ ${Math.round(k.bm).toLocaleString('en')} → ${Math.round(k.am).toLocaleString('en')} m² (${up ? '+' : '−'}${Math.abs(pts).toFixed(0)} pts)</small></p></div>`;
+      <small>≈ ${Math.round(k.bm).toLocaleString('en')} → ${Math.round(k.am).toLocaleString('en')} m²</small></p></div>`;
   }).join('');
 
   const seg = (o, t) => modes.map(k =>

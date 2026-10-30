@@ -70,3 +70,4 @@ button.active, button:hover { background: #3a8d6b; }
 .hsum b { margin-left: 4px; }
 .hsum .up b { color: #5fd49b; } .hsum .down b { color: #ff7b72; }
 .hsum:hover span { background: #34424b; }
+.kpi .big .u { font-size: 20px; font-weight: 600; }
