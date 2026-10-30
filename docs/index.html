@@ -67,7 +67,7 @@
         <span><i class="c-walk"></i>Pedestrians (paving, squares)</span>
         <span><i class="c-green"></i>Greenery</span>
       </div>
-      <p class="small"><b>Rough estimate (about ±10 percentage points).</b> <i>Existing</i>: BGT base-map polygons (PDOK) inside the plan p18 footprint, by function. <i>Proposed</i>: colour classes of the plan (asphalt/clinker = cars, red asphalt = cycle path, paving = pedestrians, green) plus the shared 5.80 m carriageway, counted half car, half bike. Water and buildings are excluded. Tree canopies drawn over paving count as green, so “Pedestrians &amp; green” is the most reliable figure for people. Scripts: <code>scripts/space_share.py</code>.</p>
+      <p class="small"><b>Rough estimate (about ±10 percentage points).</b> <i>Existing</i>: BGT base-map polygons (PDOK) inside the plan p18 footprint, by function. <i>Proposed</i>: colour classes of the plan (asphalt/clinker = cars, red asphalt = cycle path, paving = pedestrians, green) plus the shared 5.80 m carriageway, counted half car, half bike. Water and buildings are excluded. Tree canopies are removed from the analysis: each canopy pixel takes the class of the nearest surface outside the canopy. “Pedestrians &amp; green” combines paving and planting. Scripts: <code>scripts/space_share.py</code>.</p>
     </section>
   </main>
 

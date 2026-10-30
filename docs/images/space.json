@@ -6,10 +6,10 @@
   "green": 1612
  },
  "after_m2": {
-  "car": 1688,
-  "bike": 1601,
-  "walk": 2839,
-  "green": 3662
+  "car": 2121,
+  "bike": 1667,
+  "walk": 3646,
+  "green": 2144
  },
  "before_pct": {
   "car": 34.3,
@@ -18,21 +18,21 @@
   "green": 16.9
  },
  "after_pct": {
-  "car": 17.2,
-  "bike": 16.4,
-  "walk": 29.0,
-  "green": 37.4
+  "car": 22.1,
+  "bike": 17.4,
+  "walk": 38.1,
+  "green": 22.4
  },
  "change_pct_points": {
-  "car": -17.0,
-  "bike": 6.3,
-  "walk": -9.8,
-  "green": 20.5
+  "car": -12.1,
+  "bike": 7.4,
+  "walk": -0.8,
+  "green": 5.5
  },
  "change_relative_pct": {
-  "car": -48,
-  "bike": 67,
-  "walk": -23,
-  "green": 127
+  "car": -35,
+  "bike": 74,
+  "walk": -2,
+  "green": 33
  }
 }

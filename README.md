@@ -55,7 +55,7 @@ uv run python -m http.server 8000 -d docs     # http://localhost:8000
 uv run python scripts/space_share.py work/pdf/images/p18_0.png work/geo_p18.json   # writes docs/images/space.json
 ```
 
-A rough estimate (about ±10 percentage points) of how public space is divided between cars, cyclists, pedestrians and greenery around the Ledig Erf. *Existing* comes from BGT polygons (PDOK) by function inside the p18 footprint; *proposed* from colour classes of plan p18 (legend) plus the 5.80 m shared carriageway traced on the plan and counted half car, half bike. Water and buildings are excluded. Result: car space ≈ −48 % (34 % → 17 % of the space), cycling space ≈ +67 % (10 % → 16 %), pedestrians and green ≈ +22 % (56 % → 66 %). Tree canopies drawn over paving count as green, so pedestrians and green are best read together.
+A rough estimate (about ±10 percentage points) of how public space is divided between cars, cyclists, pedestrians and greenery around the Ledig Erf. *Existing* comes from BGT polygons (PDOK) by function inside the p18 footprint; *proposed* from colour classes of plan p18 (legend) plus the 5.80 m shared carriageway traced on the plan and counted half car, half bike. Water and buildings are excluded. Tree canopies are removed: each canopy pixel takes the class of the nearest surface outside the canopy. Result: car space ≈ −35 % (34 % → 22 % of the space), cycling space ≈ +74 % (10 % → 17 %), pedestrians and green together ≈ +9 % (56 % → 60 %; paving alone is about unchanged), greenery ≈ +33 % (17 % → 22 %).
 
 ## Georeferencing the site plans
 

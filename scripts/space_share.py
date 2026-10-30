@@ -55,16 +55,36 @@ lane = np.zeros((h, w), np.uint8)
 for line in lane_view:
     pts = np.array([[x * k / S, y * k / S] for x, y in line], np.int32)
     cv2.polylines(lane, [pts], False, 1, thickness=max(1, int(round(LANE_M / px_m))))
-lane = lane.astype(bool) & ~water & ~white & ~green
-
 car_px = grey | brown
-shared = lane & ~car_px
-# the shared lane is split half car / half bike; grey+klinker carriageway counts fully as car
+base = {"white": white, "water": water, "car": car_px, "bike": pink, "walk": (peach | yellow) & ~car_px & ~pink, "green": green & ~(peach | yellow)}
+
+# Dark tree canopies are drawn over paving/planting: drop them and give each canopy pixel the
+# class of the nearest non-canopy pixel, so the analysis only sees what lies under the trees.
+dark = green & (V_ < 200)
+dark = cv2.morphologyEx(dark.astype(np.uint8), cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9)))
+cnts, _ = cv2.findContours(dark, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+canopy = np.zeros((h, w), np.uint8)
+cv2.drawContours(canopy, [c for c in cnts if cv2.contourArea(c) > 150], -1, 1, -1)
+canopy = canopy.astype(bool)
+names = ["white", "water", "car", "bike", "walk", "green"]
+lab = np.zeros((h, w), np.int32)
+for i, n in enumerate(names):
+    lab[base[n] & ~canopy] = i
+cand = np.full((len(names), h, w), np.inf, np.float32)
+for i, n in enumerate(names):
+    src = (base[n] & ~canopy).astype(np.uint8)
+    if src.any(): cand[i] = cv2.distanceTransform(1 - src, cv2.DIST_L2, 3)
+lab[canopy] = cand.argmin(axis=0)[canopy]
+M = {n: lab == i for i, n in enumerate(names)}
+print("tree canopy removed (m2):", round(canopy.sum() * area_px))
+
+lane = lane.astype(bool) & ~M["water"] & ~M["white"] & ~M["green"]
+shared = lane & ~M["car"]
 after = {
-    "car": (car_px.sum() + 0.5 * shared.sum()) * area_px,
-    "bike": (pink.sum() + 0.5 * shared.sum()) * area_px,
-    "walk": ((peach & ~lane).sum() + yellow.sum()) * area_px,
-    "green": green.sum() * area_px,
+    "car": (M["car"].sum() + 0.5 * shared.sum()) * area_px,
+    "bike": (M["bike"].sum() + 0.5 * shared.sum()) * area_px,
+    "walk": (M["walk"] & ~lane).sum() * area_px,
+    "green": M["green"].sum() * area_px,
 }
 
 # ---------- BEFORE: BGT ----------
@@ -129,6 +149,7 @@ print(json.dumps(out, indent=1))
 qa = small.copy()
 col = {"car": (60, 60, 230), "bike": (200, 60, 200), "walk": (60, 190, 240)}
 ov = qa.copy()
-ov[car_px] = col["car"]; ov[pink] = col["bike"]; ov[(peach & ~lane) | yellow] = col["walk"]
-ov[shared] = (0, 120, 255); ov[green] = (80, 160, 80)
+ov[M["car"]] = col["car"]; ov[M["bike"]] = col["bike"]; ov[M["walk"] & ~lane] = col["walk"]
+ov[shared] = (0, 120, 255); ov[M["green"]] = (80, 160, 80)
+ov[canopy] = (ov[canopy] * 0.6 + np.array([255, 255, 255]) * 0.4).astype(np.uint8)
 cv2.imwrite(a.qa, cv2.addWeighted(qa, 0.35, ov, 0.65, 0))
