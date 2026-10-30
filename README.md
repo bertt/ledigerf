@@ -1,6 +1,6 @@
 # Ledig Erf – before / after photo viewer
 
-Extracts the images from the concept design note *"Nota van Uitgangspunten en Schetsontwerp Ledig Erf – Bleekstraat"* (Utrecht) and shows them in a static website with a before/after slider (existing situation vs. proposed design). Ready for GitHub Pages.
+Extracts the images from the concept design note *"Nota van Uitgangspunten en Schetsontwerp Ledig Erf – Bleekstraat"* (Utrecht) and shows them in a static website with existing and proposed photos side by side. Ready for GitHub Pages.
 
 **Live site: <https://bertt.github.io/ledigerf/>**
 
@@ -25,7 +25,7 @@ uv run python scripts/make_gallery.py      # web JPEGs + docs/images/gallery.jso
 
 `docs/` is a static site with five tabs:
 
-- **Photo compare** (default) – before/after slider for each existing/proposed pair.
+- **Photo compare** (default) – existing and proposed photos side by side for each pair.
 - **Map** – MapLibre map (OpenFreeMap base) with the georeferenced site plans of Ledig Erf (p18) and Catharijnesingel (p30) as overlays; toggle and opacity controls.
 - **Permanent links** – every tab has its own URL: [`#compare`](https://bertt.github.io/ledigerf/#compare), [`#map`](https://bertt.github.io/ledigerf/#map), [`#space`](https://bertt.github.io/ledigerf/#space), [`#gallery`](https://bertt.github.io/ledigerf/#gallery), [`#info`](https://bertt.github.io/ledigerf/#info). The address bar updates when switching tabs, and back/forward works.
 - **Space shift** – rough estimate of the share of space for cars, cyclists, pedestrians and greenery, existing vs. proposed.

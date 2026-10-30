@@ -13,13 +13,6 @@ function show(p, btn) {
   $("#imgAfter").src = img(p.after);
   $("#caption").textContent = p.text;
   document.querySelectorAll("#pairs button").forEach((b) => b.classList.toggle("active", b === btn));
-  setPos(50);
-}
-
-function setPos(pct) {
-  pct = Math.max(0, Math.min(100, pct));
-  $("#clip").style.width = pct + "%";
-  $("#handle").style.left = pct + "%";
 }
 
 PAIRS.forEach((p, i) => {
@@ -30,27 +23,12 @@ PAIRS.forEach((p, i) => {
   if (i === 0) show(p, b);
 });
 
-const slider = $("#slider");
-let drag = false;
-const move = (e) => {
-  const r = slider.getBoundingClientRect();
-  setPos(((e.touches ? e.touches[0].clientX : e.clientX) - r.left) / r.width * 100);
-};
-slider.addEventListener("pointerdown", (e) => { drag = true; move(e); });
-window.addEventListener("pointerup", () => (drag = false));
-window.addEventListener("pointermove", (e) => drag && move(e));
-
-// keep the "before" image the same size as the slider so both align
-function fit() { $("#imgBefore").style.width = slider.clientWidth + "px"; }
-new ResizeObserver(fit).observe(slider);
-
 function showTab(tab) {
   const b = document.querySelector(`nav button[data-tab="${tab}"]`);
   if (!b) return;
   document.querySelectorAll("nav button, .tab").forEach((e) => e.classList.remove("active"));
   b.classList.add("active");
   $("#" + tab).classList.add("active");
-  fit();
   if (window.onTab) window.onTab(tab);
 }
 
