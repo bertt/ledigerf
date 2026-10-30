@@ -8,7 +8,7 @@ fetch('images/space.json').then(r => r.json()).then(d => {
     { key: 'walk', label: 'Pedestrians & green', b: people(d.before_m2), a: people(d.after_m2), cls: 'c-walk', arrow: '▲' },
   ];
   const hs = document.getElementById('hsum');
-  hs.innerHTML = [['Cars', kpi[0]], ['Cyclists', kpi[1]], ['Walkers', kpi[2]]].map(([n, k]) => {
+  hs.innerHTML = [['Cars', kpi[0]], ['Cyclists', kpi[1]], ['Walkers', kpi[2]], ['Greenery', { a: d.after_m2.green, b: d.before_m2.green }]].map(([n, k]) => {
     const rel = Math.round((k.a - k.b) / k.b * 100);
     return `<span class="${rel >= 0 ? 'up' : 'down'}">${n} <b>${rel >= 0 ? '▲' : '▼'} ${Math.abs(rel)}%</b></span>`;
   }).join('');
