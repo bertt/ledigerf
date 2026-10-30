@@ -1,0 +1,53 @@
+# Ledig Erf – before / after photo viewer
+
+Extracts the images from the concept design note *"Nota van Uitgangspunten en Schetsontwerp Ledig Erf – Bleekstraat"* (Utrecht) and shows them in a static website with a before/after slider (existing situation vs. proposed design). Ready for GitHub Pages.
+
+## Setup
+
+Python via [`uv`](https://docs.astral.sh/uv/):
+
+```powershell
+uv sync
+```
+
+## Build the images
+
+```powershell
+uv run python scripts/extract_pdf.py "Concept Nota van Uitgangspunten en Schetsontwerp Ledig Erf – Bleekstraat.pdf"
+uv run python scripts/make_gallery.py      # web JPEGs + docs/images/gallery.json
+```
+
+`extract_pdf.py` writes the embedded images and page renders to `work/pdf/` (git-ignored); `make_gallery.py` selects the relevant ones and writes web-sized JPEGs to `docs/images/`.
+
+## Website
+
+`docs/` is a static site with four tabs:
+
+- **Photo compare** (default) – before/after slider for each existing/proposed pair.
+- **Map** – MapLibre map (OpenFreeMap base) with the georeferenced site plans of Ledig Erf (p18) and Catharijnesingel (p30) as overlays; toggle and opacity controls. Deep links: `#map`, `#gallery`, `#info`.
+- **All images** – gallery of all extracted images with a lightbox.
+- **Info** – short English summary of what is planned at Ledig Erf, with a link to the project page.
+
+```powershell
+uv run python -m http.server 8000 -d docs     # http://localhost:8000
+```
+
+## Georeferencing the site plans
+
+```powershell
+uv run python scripts/georeference.py work/pdf/images/p18_0.png p18          # water outline vs. BGT water (PDOK)
+uv run python scripts/match_plans.py work/pdf/images/p18_0.png work/geo_p18.json work/pdf/images/p30_0.png p30   # SIFT feature matching against p18
+uv run python scripts/export_georef.py     # transparent WebP overlays + docs/images/georef.json
+```
+
+- **p18** is placed by matching its blue water areas to the BGT water polygons (scale, rotation, translation search; Dice 0.68, ≈5.5 cm/px). Bridges and the plan's simplified water cause some mismatch.
+- **p30** has little water in common with the BGT, so it is matched to the already georeferenced p18 through shared features (SIFT + RANSAC, 47 inliers, ≈7 cm/px). The overlay against BGT water was checked visually.
+- Both results are written as four corner coordinates (WGS84) used by MapLibre image sources. Accuracy is roughly a metre or more; the plans are stylised drawings.
+
+## GitHub Pages
+
+*Settings → Pages → Deploy from branch → `main` / `docs`*. All paths are relative.
+
+## Notes
+
+- The PDF is a concept document; check its copyright before publishing the images.

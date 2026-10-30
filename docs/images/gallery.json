@@ -1,0 +1,72 @@
+[
+  {
+    "file": "images/p06_0.jpg",
+    "caption": "Project boundaries (aerial)",
+    "kind": "map"
+  },
+  {
+    "file": "images/p18_0.jpg",
+    "caption": "Drawn site plan, Ledig Erf",
+    "kind": "map"
+  },
+  {
+    "file": "images/p30_0.jpg",
+    "caption": "Drawn site plan, Catharijnesingel",
+    "kind": "map"
+  },
+  {
+    "file": "images/p22_0.jpg",
+    "caption": "Bird's-eye impression, new Ledig Erf",
+    "kind": "impression"
+  },
+  {
+    "file": "images/p26_0.jpg",
+    "caption": "Existing: Ledig Erf from the Vaartscherijnbrug",
+    "kind": "existing"
+  },
+  {
+    "file": "images/p27_0.jpg",
+    "caption": "Proposed: Ledig Erf from the Vaartscherijnbrug",
+    "kind": "proposed"
+  },
+  {
+    "file": "images/p28_0.jpg",
+    "caption": "Existing: Ledig Erf from the tram house side",
+    "kind": "existing"
+  },
+  {
+    "file": "images/p29_0.jpg",
+    "caption": "Proposed: Ledig Erf from the tram house side",
+    "kind": "proposed"
+  },
+  {
+    "file": "images/p36_0.jpg",
+    "caption": "Existing: Catharijnesingel / Bleekstraat crossing",
+    "kind": "existing"
+  },
+  {
+    "file": "images/p37_0.jpg",
+    "caption": "Proposed: Catharijnesingel / Bleekstraat crossing",
+    "kind": "proposed"
+  },
+  {
+    "file": "images/p38_0.jpg",
+    "caption": "Existing: Catharijnesingel (east side)",
+    "kind": "existing"
+  },
+  {
+    "file": "images/p39_0.jpg",
+    "caption": "Proposed: Catharijnesingel with walking path",
+    "kind": "proposed"
+  },
+  {
+    "file": "images/p44_0.jpg",
+    "caption": "Existing: Bleekstraat",
+    "kind": "existing"
+  },
+  {
+    "file": "images/p45_0.jpg",
+    "caption": "Proposed: Bleekstraat",
+    "kind": "proposed"
+  }
+]

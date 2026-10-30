@@ -1,0 +1,16 @@
+[project]
+name = "ledigerf"
+version = "0.1.0"
+description = "Ledig Erf (Utrecht) PDF image extraction and before/after photo viewer"
+requires-python = ">=3.10"
+dependencies = [
+    "pymupdf",
+    "pillow",
+    "numpy",
+    "opencv-python-headless>=5.0.0.93",
+    "requests>=2.34.2",
+    "shapely>=2.1.2",
+    "pyproj>=3.7.1",
+    "geopandas>=1.1.4",
+    "pyarrow>=25.0.1",
+]

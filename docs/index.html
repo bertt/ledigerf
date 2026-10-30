@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledig Erf, Utrecht – before / after</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Ledig Erf, Utrecht <span>concept design: before / after</span></h1>
+    <nav>
+      <button data-tab="compare" class="active">Photo compare</button>
+      <button data-tab="map">Map</button>
+      <button data-tab="gallery">All images</button>
+      <button data-tab="info">ⓘ Info</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="hero-text">Utrecht is turning the car-dominated Ledig Erf, the Catharijnesingel and the Bleekstraat into a greener, people-first southern gate to the city centre. <b>Concept version October 2026 – not yet adopted.</b></p>
+    <ol class="timeline">
+      <li class="done"><time>2022–23</time><span>Residents and businesses consulted</span></li>
+      <li class="done"><time>Jan 2024</time><span>City council adopts the Zuidpoort approach</span></li>
+      <li class="done"><time>Apr 2026</time><span>Cargo-bike conversations on site</span></li>
+      <li class="now"><time>Autumn 2026</time><span>Concept design shared: online survey &amp; walk-in evening</span></li>
+      <li><time>Next</time><span>Design sharpened, then formally adopted</span></li>
+      <li class="tbd"><time>Later</time><span>Detailed design &amp; construction – dates not yet published</span></li>
+    </ol>
+  </section>
+
+  <main id="compare" class="tab active">
+    <div id="pairs"></div>
+    <div id="slider">
+      <img id="imgAfter" alt="After">
+      <div id="clip"><img id="imgBefore" alt="Before"></div>
+      <div id="handle"><span>◀ ▶</span></div>
+      <b class="tag left">Existing</b><b class="tag right">Proposed</b>
+    </div>
+    <p id="caption"></p>
+  </main>
+
+  <main id="map" class="tab">
+    <div id="mapwrap">
+      <div id="maplibre"></div>
+      <aside id="mapctl">
+        <h3>Georeferenced site plans</h3>
+        <div id="planlist"></div>
+        <label>Opacity <input id="opacity" type="range" min="0" max="100" value="85"></label>
+        <p class="small">Base map: OpenFreeMap. Plans are placed by control-point matching and are approximate (about a metre or more).</p>
+      </aside>
+    </div>
+  </main>
+
+  <main id="gallery" class="tab"><div id="grid"></div></main>
+
+  <main id="info" class="tab">
+    <section class="panel">
+      <h2>From traffic junction to green city square</h2>
+      <p class="lead">Ledig Erf is where the Oudegracht, Singel, Vaartsche Rijn and Kromme Rijn meet – once the southern gate of Utrecht, now a car-dominated junction. The concept design makes it a place to walk, cycle, sit and meet.</p>
+
+      <div class="cards">
+        <div class="card"><span class="ico">🚫</span><h3>Car-free</h3><p>Vaartscherijnbrug closed to motorised traffic; emergency services keep access.</p></div>
+        <div class="card"><span class="ico">🧱</span><h3>One square</h3><p>Same paving between the four bridges, matching the Tolsteegbarrière.</p></div>
+        <div class="card"><span class="ico">🚶</span><h3>Walking</h3><p>Routes along the water and across the square, step-free for wheelchairs and prams.</p></div>
+        <div class="card"><span class="ico">🚲</span><h3>Cycling</h3><p>Red-asphalt route and 40–60 new bike parking spaces at the edges.</p></div>
+        <div class="card"><span class="ico">🌳</span><h3>Green</h3><p>20–30 new trees, 1,500–2,000 m² of paving replaced by green; plane trees stay.</p></div>
+        <div class="card"><span class="ico">💧</span><h3>Climate</h3><p>Lowered green areas collect rainwater and reduce flooding and heat.</p></div>
+        <div class="card"><span class="ico">🏛️</span><h3>History</h3><p>Tram house, historic bridges and “De Tourrenners” get room to be seen.</p></div>
+        <div class="card"><span class="ico">🚌</span><h3>Bus line 2</h3><p>Still under study: the plan shows a version with and without the bus.</p></div>
+      </div>
+
+      <p class="small">The plan also covers the Catharijnesingel (green cycle and walking route along the canal) and the Bleekstraat (a greener street). This is a concept sketch design; exact tree numbers and positions follow in the next phase.</p>
+      <p><a class="btn" href="https://denkmee.utrecht.nl/nl-NL/projects/ledigerf-bleekstraat/1" target="_blank" rel="noopener">Project page on Denk Mee Utrecht ↗</a></p>
+    </section>
+  </main>
+
+  <div id="lightbox" hidden><img alt=""><p></p></div>
+
+  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+  <script src="app.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
