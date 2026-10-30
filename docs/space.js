@@ -7,6 +7,13 @@ fetch('images/space.json').then(r => r.json()).then(d => {
     { key: 'bike', label: 'Cycling space', b: d.before_m2.bike, a: d.after_m2.bike, cls: 'c-bike', arrow: '▲' },
     { key: 'walk', label: 'Pedestrians & green', b: people(d.before_m2), a: people(d.after_m2), cls: 'c-walk', arrow: '▲' },
   ];
+  const hs = document.getElementById('hsum');
+  hs.innerHTML = [['Cars', kpi[0]], ['Cyclists', kpi[1]], ['Walkers', kpi[2]]].map(([n, k]) => {
+    const rel = Math.round((k.a - k.b) / k.b * 100);
+    return `<span class="${rel >= 0 ? 'up' : 'down'}">${n} <b>${rel >= 0 ? '▲' : '▼'} ${Math.abs(rel)}%</b></span>`;
+  }).join('');
+  hs.addEventListener('click', e => { e.preventDefault(); document.querySelector('nav button[data-tab="space"]').click(); });
+
   document.getElementById('kpis').innerHTML = kpi.map(k => {
     const rel = Math.round((k.a - k.b) / k.b * 100);
     const pts = (k.a / ta - k.b / tb) * 100;
